@@ -11,9 +11,13 @@ var {
   ListView
 } = React;
 
+var KDSocialShare = require('NativeModules').KDSocialShare;
+
 var Recipe = require('./recipe.js');
 
 var recipesMock = require('./data/recipesMock.js');
+
+
 
 var Recipes = React.createClass({
 
@@ -25,10 +29,24 @@ var Recipes = React.createClass({
     };
   },
 
+  _onShareButton: function(rowData){
+
+    KDSocialShare.tweet({
+         'text':'Sharing'+ rowData.name
+       },
+       (results) => {
+         console.log(results);
+       }
+     );
+
+  },
+
   _onGoToRecipeButton: function(rowData){
     this.props.navigator.push({
       title: rowData.name,
       component: Recipe,
+      rightButtonTitle: 'Share',
+      onRightButtonPress: () => this._onShareButton(rowData),
       passProps: {
         recipe: rowData
       }

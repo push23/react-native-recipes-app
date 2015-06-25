@@ -45,11 +45,11 @@ var Recipe = React.createClass({
 
 var styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#eee',
+    flex: 1
   },
   imageContainer: {
     flex: 1,
+    backgroundColor: '#eee',
     alignItems:'center'
   },
   details: {
