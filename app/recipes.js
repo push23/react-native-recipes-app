@@ -11,11 +11,11 @@ var {
   ListView
 } = React;
 
-var Recipes = require('./recipes.js');
+var Recipe = require('./recipe.js');
 
 var recipesMock = require('./data/recipesMock.js');
 
-var Welcome = React.createClass({
+var Recipes = React.createClass({
 
   getInitialState: function() {
     var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
@@ -25,25 +25,31 @@ var Welcome = React.createClass({
     };
   },
 
+  _onGoToRecipeButton: function(rowData){
+    this.props.navigator.push({
+      title: rowData.name,
+      component: Recipe
+    });
+  },
+
+  getListItem: function(rowData){
+    return (
+      <TouchableHighlight
+        onPress={() => this._onGoToRecipeButton(rowData)}
+        underlayColor='#D9C65D'>
+        <View style={styles.listItem}>
+          <Text>{rowData.name}</Text>
+        </View>
+      </TouchableHighlight>
+    );
+  },
 
   render: function() {
-
-    function getListItem(rowData){
-      return (
-        <TouchableHighlight
-          underlayColor='#D9C65D'>
-          <View style={styles.listItem}>
-            <Text>{rowData.name}</Text>
-          </View>
-        </TouchableHighlight>
-      );
-    }
-
     return (
         <ListView
           style={styles.container}
           dataSource={this.state.dataSource}
-          renderRow={rowData => getListItem(rowData)}
+          renderRow={rowData => this.getListItem(rowData)}
         />
     );
   }
@@ -59,4 +65,4 @@ var styles = StyleSheet.create({
   }
 });
 
-module.exports = Welcome;
+module.exports = Recipes;
