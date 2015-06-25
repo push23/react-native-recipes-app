@@ -6,7 +6,8 @@ var {
   StyleSheet,
   Text,
   View,
-  NavigatorIOS
+  NavigatorIOS,
+  TouchableHighlight
 } = React;
 
 var Welcome = React.createClass({
@@ -19,6 +20,14 @@ var Welcome = React.createClass({
         <Text style={styles.credits}>
             by React Native
         </Text>
+
+        <TouchableHighlight
+          style={styles.button}
+          underlayColor='#ccc'>
+          <Text >
+              Get Started
+          </Text>
+        </TouchableHighlight>
       </View>
     );
   }
@@ -43,6 +52,14 @@ var styles = StyleSheet.create({
     color: '#ccc',
     marginBottom: 5,
   },
+  button: {
+    borderColor: '#555',
+    borderWidth: 1,
+    padding: 5,
+    backgroundColor: '#eee',
+    borderRadius: 2,
+    marginTop: 20
+  }
 });
 
 module.exports = Welcome;
