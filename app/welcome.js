@@ -14,14 +14,10 @@ var Welcome = React.createClass({
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          Welcome to React Native!
+          Welcome to Awesome Recipes App!
         </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
+        <Text style={styles.credits}>
+            by React Native
         </Text>
       </View>
     );
@@ -34,16 +30,17 @@ var styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingTop: 64,
-    backgroundColor: '#F5FCFF',
+    backgroundColor: 'purple',
   },
   welcome: {
     fontSize: 20,
     textAlign: 'center',
     margin: 10,
+    color: '#fff'
   },
-  instructions: {
+  credits: {
     textAlign: 'center',
-    color: '#333333',
+    color: '#ccc',
     marginBottom: 5,
   },
 });
