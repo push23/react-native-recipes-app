@@ -28,7 +28,10 @@ var Recipes = React.createClass({
   _onGoToRecipeButton: function(rowData){
     this.props.navigator.push({
       title: rowData.name,
-      component: Recipe
+      component: Recipe,
+      passProps: {
+        recipe: rowData
+      }
     });
   },
 
