@@ -7,18 +7,37 @@ var {
   Text,
   View,
   NavigatorIOS,
-  TouchableHighlight
+  TouchableHighlight,
+  ListView
 } = React;
 
 var Recipes = require('./recipes.js');
 
 var Welcome = React.createClass({
 
+  getInitialState: function() {
+    var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+
+    return {
+      dataSource: ds.cloneWithRows([
+        'row 1',
+        'row 2',
+        'row 3',
+        'row 4',
+        'row 5'
+        ]),
+    };
+  },
+
   render: function() {
     return (
-      <View style={styles.container}>
-        <Text>Recipes</Text>
-      </View>
+        <ListView
+          style={styles.container}
+          dataSource={this.state.dataSource}
+          renderRow={(rowData) =>
+            <Text>{rowData}</Text>
+          }
+        />
     );
   }
 });
@@ -26,9 +45,6 @@ var Welcome = React.createClass({
 var styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingTop: 64,
     backgroundColor: '#C3D1DA',
   }
 });
