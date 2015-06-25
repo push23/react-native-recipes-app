@@ -10,7 +10,17 @@ var {
   TouchableHighlight
 } = React;
 
+var Recipes = require('./recipes.js');
+
 var Welcome = React.createClass({
+
+  _onGetStartedButton: function(){
+    this.props.navigator.push({
+      title: 'Recipes',
+      component: Recipes
+      });
+  },
+
   render: function() {
     return (
       <View style={styles.container}>
@@ -22,9 +32,10 @@ var Welcome = React.createClass({
         </Text>
 
         <TouchableHighlight
+          onPress={this._onGetStartedButton}
           style={styles.button}
           underlayColor='#ccc'>
-          <Text >
+          <Text>
               Get Started
           </Text>
         </TouchableHighlight>
@@ -39,7 +50,7 @@ var styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingTop: 64,
-    backgroundColor: 'purple',
+    backgroundColor: '#5A708E',
   },
   welcome: {
     fontSize: 20,

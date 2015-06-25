@@ -21,11 +21,11 @@ var Application = React.createClass({
   render: function() {
     return (
       <NavigatorIOS
-        ref='navigation'
         style={styles.container}
         initialRoute={{
-          title: 'Welcome Screen',
-          component: Welcome
+          title: 'Welcome',
+          component: Welcome,
+          backButtonTitle: 'Back',
         }}
       />
     );
