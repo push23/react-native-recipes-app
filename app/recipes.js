@@ -31,6 +31,8 @@ var Recipes = React.createClass({
 
   _onShareButton: function(rowData){
 
+    // https://raw.githubusercontent.com/doefler/react-native-social-share/master/animation-looping.gif
+
     KDSocialShare.tweet({
          'text':'Sharing'+ rowData.name
        },
